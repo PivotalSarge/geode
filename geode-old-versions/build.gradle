@@ -21,6 +21,7 @@ disableMavenPublishing()
 project.ext.installs = new Properties();
 
 dependencies {
+  compile project(":geode-junit")
   testCompile project(":geode-junit")
 }
 
