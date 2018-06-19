@@ -21,11 +21,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.tools.ant.filters.StringInputStream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -163,9 +163,9 @@ public class LinuxSystemStatsTest extends StatSamplerTestCase {
    */
   private File writeStringToFile(String mockProcStatFileContents) throws IOException {
     File mockFile = temporaryFolder.newFile();
-    StringInputStream sis = new StringInputStream(mockProcStatFileContents);
     FileOutputStream mockFileOutputStream = new FileOutputStream(mockFile);
-    IOUtils.copy(sis, mockFileOutputStream);
+    PrintStream mockFilePrintStream = new PrintStream(mockFileOutputStream);
+    mockFilePrintStream.print(mockProcStatFileContents);
     IOUtils.closeQuietly(mockFileOutputStream);
     return mockFile;
   }

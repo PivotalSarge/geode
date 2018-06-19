@@ -16,5 +16,6 @@
  */
 
 dependencies {
+  compile project(':geode-junit')
   testCompile project(':geode-junit')
 }
